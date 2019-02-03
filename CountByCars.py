@@ -4,6 +4,7 @@
 
 import numpy as np
 import random
+import sys
 
 TOTAL_CARS_PASSED = 600
 MAX_DIGITS = 6
@@ -44,5 +45,11 @@ if __name__ == '__main__':
                 counted_licences.append(licence)
         results.append(count-1)
         local_fractions.append(num_local_licences/TOTAL_CARS_PASSED)
+        if '--list-all' in sys.argv:
+            print count-1
 
     print np.mean(results)
+
+    if '--min-max' in sys.argv:
+        print "MIN = " + str(min(results))
+        print "MAX = " + str(max(results))
